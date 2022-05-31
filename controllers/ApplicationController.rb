@@ -19,6 +19,7 @@ class ApplicationController < Sinatra::Base
   # )
   
   use Rack::MethodOverride
+  use Rack::Flash
 
   set :Method_Override, true
 
