@@ -4,8 +4,8 @@ class ApplicationController < Sinatra::Base
   Bundler.require()
 
   # require './config/environments'
-  require 'flash'
-
+  # require 'flash'
+  require 'rack-flash'
 
   
 
@@ -13,12 +13,13 @@ class ApplicationController < Sinatra::Base
   enable :sessions
 
   # set up our DB connection --
-  # ActiveRecord::Base.establish_connection(
-  #   :adapter => 'postgresql',
-  #   :database => 'one_stop'
-  # )
+  ActiveRecord::Base.establish_connection(
+    :adapter => 'postgresql',
+    :database => 'easy_health_tracker'
+  )
   
   use Rack::MethodOverride
+
   use Rack::Flash
 
   set :Method_Override, true
