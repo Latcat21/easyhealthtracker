@@ -20,6 +20,10 @@
         <ul class="navbar-nav ml-auto">
          <% if session[:logged_in] %>
          
+           <li class="nav-item">
+             <a href="/days" class="nav-link">Account Home</a>
+           </li>
+          
           <li class="nav-item">
            <a href="/users/logout" class="nav-link">Log Out</a>
           </li>
@@ -27,6 +31,7 @@
           <li class="nav-item">
            <a href="/users/login" class="nav-link">Log In</a>
          </li>
+        
         <li class="nav-item">
          <a href="/users/register" class="nav-link">Register</a>
        </li>
@@ -37,12 +42,26 @@
 </nav>
 </header>
 
- <div class="text-center mt-5 p5-5"> 
-      <h3 class="text-danger"><% if flash.has?(:message) %> <%= flash[:message] %><% end %></h3> 
-              
-</div>  
- 
-
+  <div class="session-message  mt-5">
+      <% if session[:message] %>
+      <% if session[:message][:status] == 'bad' %>
+      <div class="sessions-msg bg-danger p-3 text-center">
+      <% else %>
+      <div class="sessions-msg  bg-secondary  p-3 text-center">
+      <% end %>
+        <h3 class="text-center ">
+        <h3 class="message <%= session[:message][:status] %>">
+        </h3>
+      </h3>
+      <h4 class="text-white pb-3">
+      <%= session[:message][:message] %>
+      </h4>
+      <%
+  end 
+ session[:message] = nil 
+ %>
+ </div>
+ </div>
 
 
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

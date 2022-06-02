@@ -25,11 +25,11 @@ class UserController < ApplicationController
       redirect '/calories'
       else
       # error -- incorrect un or pw
-      # session[:message] = {
-      #   success: false,
-      #   status: "bad",
-      #   message: "Invalid username or password."
-      # }
+      session[:message] = {
+        success: false,
+        status: "bad",
+        message: "Invalid username or password."
+      }
       # redirect to /login so they can reattempt
       redirect '/users/login'
     end
@@ -52,24 +52,24 @@ class UserController < ApplicationController
 
     if user.password.length < 8
       session[:logged_in] = false
-      # session[:message] = {
-      # success: false,
-      # status: "bad",
-      # message: "please enter a password that is 8 or more characters"
-      # }
+      session[:message] = {
+      success: false,
+      status: "bad",
+      message: "please enter a password that is 8 or more characters"
+      }
       # redirect 
-      flash[:message] = "password to0 short!"
+     
       redirect '/users/register'
     end
 
     if user.password != params[:passwordtwo]
       session[:logged_in] = false
 
-      # session[:message] = {
-      # success: false,
-      # status: "bad",
-      # message: "Passwords do not match up please try again"
-      # }
+      session[:message] = {
+      success: false,
+      status: "bad",
+      message: "Passwords do not match up please try again"
+      }
       # redirect 
       redirect '/users/register'
     end
@@ -79,21 +79,21 @@ class UserController < ApplicationController
     session[:logged_in] = true
     session[:username] = user.username
 
-    # session[:message] = {
-    #   success: true,
-    #   status: "good",
-    #   message: "Welcome to the site, you are now logged in as #{user.username}."
-    #   }
+    session[:message] = {
+      success: true,
+      status: "good",
+      message: "Welcome to the site, you are now logged in as #{user.username}."
+      }
       # redirect to the site
       redirect '/calories'
       # else if user does exist
       else 
-      # session message -- username taken
-      # session[:message] = {
-      #   success: false,
-      #   status: "bad",
-      #   message: "Sorry, username #{params[:username]} is already taken."
-      # }
+     
+      session[:message] = {
+        success: false,
+        status: "bad",
+        message: "Sorry, username #{params[:username]} is already taken."
+      }
       # redirect to register so they can try again
       redirect '/users/register'
       end
@@ -104,11 +104,11 @@ class UserController < ApplicationController
     username = session[:username] # grab username before destroying session...
     #destroying the session
     session.destroy
-    # session[:message] = {
-    #   success: true,
-    #   status: "neutral",
-    #   message: "User #{username} logged out." 
-    # }
+    session[:message] = {
+      success: true,
+      status: "neutral",
+      message: "User #{username} logged out." 
+    }
     redirect '/users/login'
   end
 

@@ -4,8 +4,9 @@ class ApplicationController < Sinatra::Base
   Bundler.require()
 
   # require './config/environments'
-  # require 'flash'
-  require 'rack-flash'
+
+
+  
 
   
 
@@ -20,7 +21,6 @@ class ApplicationController < Sinatra::Base
   
   use Rack::MethodOverride
 
-  use Rack::Flash
 
   set :Method_Override, true
 
