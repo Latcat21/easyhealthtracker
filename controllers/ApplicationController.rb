@@ -55,12 +55,20 @@ class ApplicationController < Sinatra::Base
 
     def neutral_message(message)
       return {
-        
           success: true,
           status: "neutral",
           message: message
-        
-      }
+        }
+    end
+
+    def is_logged_in?
+      session[:logged_in]
+    end
+
+    def redirect_if_not_logged_in
+      if !is_logged_in?
+        redirect '/users/login'
+      end
     end
 
   end
