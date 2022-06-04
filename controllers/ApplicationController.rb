@@ -5,12 +5,6 @@ class ApplicationController < Sinatra::Base
 
   # require './config/environments'
 
-
-  
-
-  
-
-  #enable sessions
   enable :sessions
 
   # set up our DB connection --
@@ -20,7 +14,6 @@ class ApplicationController < Sinatra::Base
   )
   
   use Rack::MethodOverride
-
 
   set :Method_Override, true
 
@@ -40,6 +33,36 @@ class ApplicationController < Sinatra::Base
 
   get '*' do
     halt 404
+  end
+
+  helpers do
+
+    def success_message(message)
+       return {
+        success: true,
+        status: "good",
+        message: message
+      }
+    end
+
+    def error_message(message)
+      return {
+        success: false,
+        status: "bad",
+        message: message
+      }
+    end
+
+    def neutral_message(message)
+      return {
+        
+          success: true,
+          status: "neutral",
+          message: message
+        
+      }
+    end
+
   end
 
 end
