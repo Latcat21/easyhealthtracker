@@ -3,6 +3,10 @@ class ApplicationController < Sinatra::Base
   require 'bundler'
   Bundler.require()
 
+  # require 'net/http'
+  require 'rest-client'
+
+
   # require './config/environments'
 
   enable :sessions

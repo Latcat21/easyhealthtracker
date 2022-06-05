@@ -1,11 +1,9 @@
 class UserController < ApplicationController
 
-  # shows login page
   get '/login' do
     erb :login
   end
 
- 
   post '/login' do
     user = User.find_by username: params[:username]
     pw = params[:password]
@@ -21,14 +19,12 @@ class UserController < ApplicationController
       
        redirect '/users/login'
     end
-
-  end
+   end
 
   get '/register' do
     erb :register
   end
 
- 
   post '/register' do
     user = User.find_by username: params[:username]
 
@@ -73,4 +69,5 @@ class UserController < ApplicationController
 
     redirect '/users/login'
   end
+
 end
