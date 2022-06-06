@@ -3,7 +3,7 @@
 <div class="container mt-5 py-5">
 <h1>Enter in your food</h1>
 
-<form action="/calories/search" method="POST">
+<form action="/calories/search" method="GET">
 
 
 <div class="form-group">
@@ -17,3 +17,23 @@
 
 
 </div>
+
+ <div class="results ">
+    <% if session[:search] == 'bad' %>
+  
+  <h1 class="text-center p-3"> Not found, try another term. </h1>
+
+    <% elsif session[:search] == true%>
+     
+      <% @foods.each_with_index do | food , i |%>
+       <div class="card shadow-lg p-3 mb-5 bg-white rounded" >
+        <img class="card-img-top img-fluid" src="<%= food["photo"]["thumb"] %> " />
+          <div class="card-body">
+            <h6 class="card-title text-center"><%= food["food_name"] %></h6>
+              <p class="card-text">
+              <%=food["nf_calories"]%>
+              </p>
+            </div>
+          </div>
+    <% end %>
+    <% end %>

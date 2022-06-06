@@ -12,7 +12,7 @@ class CalorieTrackerController < ApplicationController
     erb :'calories'
   end
  
-  post '/search' do
+  get '/search' do
     
     foods = params[:foods]
     headers = {
@@ -23,34 +23,16 @@ class CalorieTrackerController < ApplicationController
     url = "https://trackapi.nutritionix.com/v2/natural/nutrients"
 
     response = RestClient.post url, "query=#{foods}", headers
+    parsed_res = JSON.parse(response) 
+    puts parsed_res
+    if parsed_res["foods"]
+      session[:search] = true
+      @foods = parsed_res["foods"]
+    else
+      session[:search] = 'bad'
+    end
 
-    puts response
-  
-
-  # uri = URI.parse("https://trackapi.nutritionix.com/v2/natural/nutrients")
-  # http = Net::HTTP.new(uri.host, uri.port)
-  # response = http.post(uri.path, 'query=pizza', headers)
-
-  # rescue => error
-  # puts 'Exception: ' error.message
-  # puts response
-    #  res =  Net::HTTP.post URI("https://trackapi.nutritionix.com/v2/natural/nutrients"),
-    #   "query" => "pizza",
-    #   "x-app-id" =>  "dde99c0b",
-    #   "x-app-key" => "874d4be4b94b31bf5b2198fbd86b09dd",
-    #   "x-remote-user-id" => "0"
-
-    #  res.update
-
-    #  res.to_json
-
-    #  puts res
-
-
-     
-      
-      
-    
-  end
+    erb :calories
+    end
 
 end
