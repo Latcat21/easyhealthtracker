@@ -1,6 +1,6 @@
 class CalorieTrackerController < ApplicationController
 
-  
+
   get '/' do
     erb :'calories'
   end
@@ -9,8 +9,8 @@ class CalorieTrackerController < ApplicationController
     
     foods = params[:foods]
     headers = {
-      "x-app-id" =>  "dde99c0b",
-      "x-app-key" => "874d4be4b94b31bf5b2198fbd86b09dd",
+      "x-app-id" =>  ENV["ID"],
+      "x-app-key" => ENV["KEY"],
       "x-remote-user-id" => "0"
     }
     url = "https://trackapi.nutritionix.com/v2/natural/nutrients"
