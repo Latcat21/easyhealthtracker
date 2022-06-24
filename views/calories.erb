@@ -1,4 +1,30 @@
-<h1 class="mt-5 pt-5">HELLOOOO From calories</h1>
+<head>
+<style>
+.card{
+  margin-bottom: 25px;
+  max-width: 250px; 
+  float: left;
+  overflow: hidden;
+  margin: 5px 20px;
+  height: 500px;
+
+}
+.my-card img{
+  width: 50%;
+
+
+}
+
+.results{
+  width: 1200px;
+  margin: 0 auto;
+
+ 
+}
+</style>
+  </head>
+
+
 
 <div class="container mt-5 py-5">
 <h1>Enter in your food</h1>
@@ -27,11 +53,18 @@
      
       <% @foods.each_with_index do | food , i |%>
        <div class="card shadow-lg p-3 mb-5 bg-white rounded" >
-        <img class="card-img-top img-fluid" src="<%= food["photo"]["thumb"] %> " />
+        <img class="card-img-top img-fluid img-thumbnail" src="<%= food["photo"]["thumb"] %> " />
           <div class="card-body">
-            <h6 class="card-title text-center"><%= food["food_name"] %></h6>
-              <p class="card-text">
-              <%=food["nf_calories"]%>
+            <h6 class="card-title text-center"><%= food["food_name"].upcase() %></h6>
+              <p class="card-text text-center">
+              <%=food["nf_calories"].round() %> calories
+              </p>
+              <p class="card-text text-center">
+            
+            Quantity: <%= food["tags"]["quantity"].to_i()  %>
+            </p> 
+            <p class="card-text text-center">
+            Serving Size: <%= food["serving_unit"] %>
               </p>
             </div>
           </div>

@@ -1,14 +1,7 @@
 class CalorieTrackerController < ApplicationController
 
-  # before do
-  #   headers "x-app-id" => "dde99c0b"
-  #   headers "x-app-key" => "874d4be4b94b31bf5b2198fbd86b09dd"
-  #   headers "x-remote-user-id" => '0'
-  #   body = {query: 'pizza'}
-  # end
-
-  get '/' do
   
+  get '/' do
     erb :'calories'
   end
  

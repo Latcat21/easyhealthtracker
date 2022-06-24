@@ -1,0 +1,134 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+.home-section{
+  height: 90vh;
+  background-image:  linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9)) ,url(../images/home-section.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+
+}
+.home-section-header{
+ margin-top: 150px;
+}
+.home-section-heading{
+  color: white;
+  font-size: 50px;
+  letter-spacing: 2px;
+  padding-bottom: 20px;
+}
+.heading-span{
+  text-transform: uppercase;
+  color: orange;
+ 
+}
+.sign-up{
+  text-decoration: none;
+  background-color: orange;
+  padding: 20px;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+}
+.sign-up:hover{
+  text-decoration: none;
+  transform: scaleY(0.6);
+  color: #fff;
+}
+
+
+.days-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: blue;
+}
+.day-card{
+  border: 2px solid #000;
+  float: left;
+  width: 200px;
+  margin: 5px 5px;
+}
+.day-card-heading{
+  background-color: #000;
+  color: white;
+  font-size: 16px;
+  padding: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+.day-card-body{
+  border-bottom: 3px solid #555;
+  font-size: 15px;
+  padding: 5px;
+  text-align:center;
+  font-weight: bold;
+}
+.day-card-buttons{
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+.day-card-buttons a, button{
+  float: left;
+  padding: 2px 17px;
+}
+.day-card-buttons button{
+  border: none;
+  background-color: red;
+  color: #fff;
+  margin: 0px 5px;
+}
+.day-card-buttons a{
+  background-color: green;
+  color: #000;
+  text-transform: uppercase;
+}
+.food-section{
+  height: 100vh;
+}
+.img-gal{
+  width: 100%;
+  list-style: none;
+}
+
+.img-gal li{
+  display: block;
+  float: left;
+  width: 20%;
+  
+}
+.meal-photo{
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  background-color: #000;
+}
+.meal-photo img{
+  opacity: 0.7;
+  width: 100%;
+  transform: scale(1.15);
+}
+
+ .meal-photo img:hover{
+  transform: scale(1.03);
+  transition: ease .75s, opacity 0.5s;
+  opacity: 1;
+}
+
+.session-message{
+  width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+  z-index: 100;
+}
