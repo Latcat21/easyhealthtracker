@@ -8,3 +8,9 @@ CREATE TABLE users(
   username VARCHAR(32),
   password_digest VARCHAR(60)
 );
+
+CREATE TABLE day_calories(
+  id SERIAL PRIMARY KEY,
+  calories INTEGER,
+  user_id INTEGER REFERENCES users(id)
+ );
